@@ -1,6 +1,7 @@
 package maburhan.recipeapp.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -23,6 +24,10 @@ public class Recipe {
     @JoinColumn(name = "notes_id")
     @OneToOne(cascade = {CascadeType.ALL})
     private Notes notes;
+
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    private Set<Ingredient> ingredients;
+
 
     public Long getId() {
         return id;
@@ -102,6 +107,14 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
 
