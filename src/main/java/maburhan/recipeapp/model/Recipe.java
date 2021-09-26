@@ -31,6 +31,11 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
+    @JoinTable(name = "category_recipes",
+            joinColumns = @JoinColumn(name = "recipes_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @ManyToMany
+    private Set<Category> categories;
 
     public Long getId() {
         return id;
@@ -126,6 +131,14 @@ public class Recipe {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
 
