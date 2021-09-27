@@ -8,7 +8,7 @@ public class UnitOfMeasurement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String unitOfMeasurement;
+    private String name;
 
     public Long getId() {
         return id;
@@ -18,11 +18,11 @@ public class UnitOfMeasurement {
         this.id = id;
     }
 
-    public String getUnitOfMeasurement() {
-        return unitOfMeasurement;
+    public String getName() {
+        return name;
     }
 
-    public void setUnitOfMeasurement(String unitOfMeasurement) {
-        this.unitOfMeasurement = unitOfMeasurement;
+    public void setName(String name) {
+        this.name = name;
     }
 }
