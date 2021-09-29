@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Recipe Home Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.1/css/bootstrap.min.css} "/>
 </head>
 <body>
-<h1>Receipe Home page</h1>
+<h1>My recipes</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.id}"></td>
+        <td th:text="${recipe.name}"></td>
+
+    </tr>
+</table>
 </body>
 </html>

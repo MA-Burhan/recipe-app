@@ -1,17 +1,12 @@
 package maburhan.recipeapp.controllers;
 
-import maburhan.recipeapp.model.Category;
-import maburhan.recipeapp.model.UnitOfMeasurement;
-import maburhan.recipeapp.repositories.CategoryRepository;
-import maburhan.recipeapp.repositories.UnitOfMeasurementRepository;
 import maburhan.recipeapp.services.RecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.Optional;
 
 @Controller
 public class IndexController {
-
 
     private final RecipeService recipeService;
 
@@ -20,8 +15,9 @@ public class IndexController {
     }
 
     @RequestMapping({"", "/index"})
-    public String getIndexPage(){
+    public String getIndexPage(Model model){
 
+        model.addAttribute("recipes", recipeService.getRecipes());
 
         return "index";
     }
