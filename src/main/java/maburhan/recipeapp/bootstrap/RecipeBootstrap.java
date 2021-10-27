@@ -28,6 +28,8 @@ public class RecipeBootstrap implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         recipeRepository.saveAll(getRecipes());
+        String recipe = recipeRepository.findById(1L).get().getNotes().getRecipe().getName();
+        System.out.println(recipe);
     }
 
     private List<Recipe> getRecipes(){
@@ -73,6 +75,9 @@ public class RecipeBootstrap implements CommandLineRunner {
                 "The simplest version of guacamole is just mashed avocados with salt. Don't let the lack of availability of other ingredients stop you from making guacamole.\n" +
                 "To extend a limited supply of avocados, add either sour cream or cottage cheese to your guacamole dip. Purists may be horrified, but so what? It tastes great.");
         guacamoleRecipe.setNotes(guacamoleNotes);
+
+        //redundant in this case
+        guacamoleNotes.setRecipe(guacamoleRecipe);
 
 
         /* add ingredients */
