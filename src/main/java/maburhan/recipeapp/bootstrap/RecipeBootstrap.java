@@ -1,5 +1,6 @@
 package maburhan.recipeapp.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import maburhan.recipeapp.model.*;
 import maburhan.recipeapp.repositories.CategoryRepository;
 import maburhan.recipeapp.repositories.RecipeRepository;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements CommandLineRunner {
 
@@ -28,8 +30,7 @@ public class RecipeBootstrap implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         recipeRepository.saveAll(getRecipes());
-        String recipe = recipeRepository.findById(1L).get().getNotes().getRecipe().getName();
-        System.out.println(recipe);
+        log.debug("Loading bootstrap data");
     }
 
     private List<Recipe> getRecipes(){
