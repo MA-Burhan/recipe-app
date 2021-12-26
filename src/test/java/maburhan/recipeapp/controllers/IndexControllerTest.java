@@ -5,7 +5,6 @@ import maburhan.recipeapp.model.Recipe;
 import maburhan.recipeapp.services.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
@@ -55,8 +54,6 @@ class IndexControllerTest {
         recipes.add(new Recipe());
 
         when(recipeService.getRecipes()).thenReturn(recipes);
-
-        ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
 
         String viewName = controller.getIndexPage(model);
         assertEquals("index", viewName);
