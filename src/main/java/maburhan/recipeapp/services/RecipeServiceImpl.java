@@ -6,6 +6,7 @@ import maburhan.recipeapp.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -28,6 +29,9 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe findById(long id) {
-        return null;
+
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+
+        return recipeOptional.orElseThrow(() -> new RuntimeException("Recipe Not Found"));
     }
 }
