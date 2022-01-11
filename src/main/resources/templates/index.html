@@ -21,15 +21,16 @@
                         <table class="table table-hover">
                             <thead class="thead-inverse">
                             <tr>
-                                <th>Id</th>
+                                <th>ID</th>
                                 <th>Name</th>
+                                <th>View</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="recipe : ${recipes}">
                                 <td th:text="${recipe.id}"></td>
                                 <td th:text="${recipe.name}"></td>
-
+                                <td><a th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
                             </tr>
                             </tbody>
                         </table>
